@@ -20,9 +20,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-			</plugin>
-			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.10</version>
@@ -57,27 +54,42 @@
 				<configuration>
 					<images>
 						<image>
-							<alias>service</alias>
+							<alias>ebdocker</alias>
 							<name>dwo/ebdocker:${project.version}</name>
 							<build>
 								<dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
+								<assembly>
+									<inline>
+										<dependencySets>
+											<dependencySet>
+												<includes>
+													<include>${project.groupId}:EBServer</include>
+												</includes>
+												<outputDirectory>.</outputDirectory>
+												<outputFileNameMapping>ROOT.war</outputFileNameMapping>
+											</dependencySet>
+										</dependencySets>
+									</inline>
+								</assembly>
 							</build>
 							<run>
 								<ports>
 									<port>127.0.0.1:8080:8080</port>
 								</ports>
-								<volumes>
-									<bind>
-										<volume>${project.basedir}/target/dependency:/usr/local/tomcat/webapps</volume>
-									</bind>
-								</volumes>
+<!-- 								<volumes> -->
+<!-- 									<bind> -->
+<!-- 										<volume>${project.basedir}/target/dependency:/usr/local/tomcat/webapps</volume> -->
+<!-- 									</bind> -->
+<!-- 								</volumes> -->
 								<links>
 									<link>mysql:mysql</link>
 								</links>
 								<env>
 									<RDS_PASSWORD>E=mc2Dwo</RDS_PASSWORD>
 									<RDS_DB_NAME>dwo_devel</RDS_DB_NAME>
+									<DWO_REDIRECT>false</DWO_REDIRECT>
 								</env>
+								<namingStrategy>alias</namingStrategy>
 							</run>
 						</image>
 					</images>
