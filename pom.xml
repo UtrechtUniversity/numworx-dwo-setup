@@ -2,12 +2,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<properties>
+		<revision>2.2.2-SNAPSHOT</revision>
+	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
-		<artifactId>DWO</artifactId>
-		<version>2.2.1</version>
+		<artifactId>DWO.master.pom</artifactId>
+		<version>1.1</version>
 	</parent>
 	<artifactId>EBDocker</artifactId>
+	<version>${revision}</version>
 	<name>Docker voor EBServer</name>
 	<dependencies>
 		<dependency>
@@ -55,7 +59,7 @@
 					<images>
 						<image>
 							<alias>ebdocker</alias>
-							<name>dwo/ebdocker:${project.version}</name>
+							<name>611429739415.dkr.ecr.eu-west-1.amazonaws.com/dwoproject:%l</name>
 							<build>
 								<dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
 								<assembly>
