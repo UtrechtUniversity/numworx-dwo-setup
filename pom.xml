@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-		<revision>2.2.3-SNAPSHOT</revision>
+		<revision>2.2.5-SNAPSHOT</revision>
 	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
@@ -87,6 +87,7 @@
 <!-- 								</volumes> -->
 								<links>
 									<link>mysql:mysql</link>
+									<link>smtp:smtp</link>
 								</links>
 								<env>
 									<RDS_PASSWORD>E=mc2Dwo</RDS_PASSWORD>

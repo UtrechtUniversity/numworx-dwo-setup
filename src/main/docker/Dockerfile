@@ -6,6 +6,8 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 ADD setenv.sh /usr/local/tomcat/bin/setenv.sh
 ADD server.xml /usr/local/tomcat/conf/server.xml
 
+ENV CATALINA_OPTS="-Xms512m -Xmx768m"
+
 ENV DWO_ENV=app \
     CDN_HOST=cdn.dwo.nl \
     CDNURL=https://cdn.dwo.nl \
