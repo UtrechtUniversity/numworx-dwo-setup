@@ -1,6 +1,6 @@
 FROM tomcat:8.0-jre8
 MAINTAINER Wim van Velthoven
-EXPOSE 8080
+EXPOSE 8080 8009
 VOLUME /usr/local/tomcat/logs
 RUN rm -rf /usr/local/tomcat/webapps/*
 ADD setenv.sh /usr/local/tomcat/bin/setenv.sh
@@ -21,7 +21,7 @@ ENV RDS_DB_NAME=dwo_productie \
     RDS_USERNAME=root
 
 ENV SMTP_AUTH=false \
-    SMTP_EMAIL=wisweb@fi.uu.nl \
+    SMTP_EMAIL=fi.wisweb-l@lists.science.uu.nl \
     SMTP_PASSWORD=none \
     SMTP_PORT=25 \
     SMTP_SERVER=smtp \
