@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-		<revision>2.2.6-SNAPSHOT</revision>
+		<revision>2.2.8-SNAPSHOT</revision>
 	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
@@ -91,8 +91,8 @@
 									<link>smtp:smtp</link>
 								</links>
 								<env>
-									<RDS_PASSWORD>E=mc2Dwo</RDS_PASSWORD>
-									<RDS_DB_NAME>dwo_devel</RDS_DB_NAME>
+									<RDS_PASSWORD>${mysql.password}</RDS_PASSWORD>
+									<RDS_DB_NAME>${mysql.database}</RDS_DB_NAME>
 									<DWO_REDIRECT>false</DWO_REDIRECT>
 								</env>
 								<namingStrategy>alias</namingStrategy>
