@@ -1,6 +1,6 @@
 FROM tomcat:8.0-jre8
 MAINTAINER Wim van Velthoven
-EXPOSE 8080 8009
+EXPOSE 80 8009
 VOLUME /usr/local/tomcat/logs
 RUN rm -rf /usr/local/tomcat/webapps/*
 ADD setenv.sh /usr/local/tomcat/bin/setenv.sh

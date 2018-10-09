@@ -78,7 +78,7 @@
 							</build>
 							<run>
 								<ports>
-									<port>127.0.0.1:8080:8080</port>
+									<port>127.0.0.1:8080:80</port>
 									<port>127.0.0.1:8009:8009</port>
 								</ports>
 <!-- 								<volumes> -->
