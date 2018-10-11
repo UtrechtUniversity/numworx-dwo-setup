@@ -94,6 +94,8 @@
 									<RDS_PASSWORD>${mysql.password}</RDS_PASSWORD>
 									<RDS_DB_NAME>${mysql.database}</RDS_DB_NAME>
 									<DWO_REDIRECT>false</DWO_REDIRECT>
+									<ENV_NOSEB>true</ENV_NOSEB>
+									<ENV_IPRANGE>172.17.0.1</ENV_IPRANGE>
 								</env>
 								<namingStrategy>alias</namingStrategy>
 							</run>

@@ -27,5 +27,9 @@ ENV SMTP_AUTH=false \
     SMTP_SERVER=smtp \
     SMTP_TLS=no \
     SMTP_USER=root
+    
+ENV ENV_IPRANGE= \
+	ENV_NOSEB=false    
+    
 VOLUME /usr/local/tomcat/webapps
 ADD maven/*.war /usr/local/tomcat/webapps/
