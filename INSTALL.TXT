@@ -1,0 +1,2 @@
+installeren in AWS docker registry:
+mvn -Drevision=2.3.1 docker:build docker:push
