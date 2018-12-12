@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-		<revision>2.3.1-SNAPSHOT</revision>
+		<revision>2.3.3-SNAPSHOT</revision>
 	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
@@ -106,6 +106,9 @@
 									<ENV_NOSEB>true</ENV_NOSEB>
 									<ENV_IPRANGE>172.17.0.1</ENV_IPRANGE>
 								</env>
+								<labels>
+									<traefik.frontend.rule>Host:app.docker.localhost</traefik.frontend.rule>
+								</labels>
 								<namingStrategy>alias</namingStrategy>
 							</run>
 						</image>
