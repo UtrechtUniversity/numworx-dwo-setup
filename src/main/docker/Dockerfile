@@ -26,6 +26,7 @@ ENV SMTP_AUTH=false \
     SMTP_PORT=25 \
     SMTP_SERVER=smtp \
     SMTP_TLS=no \
+    SMTP_SSL=false \
     SMTP_USER=root
     
 ENV ENV_IPRANGE= \
