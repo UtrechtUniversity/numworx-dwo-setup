@@ -12,7 +12,8 @@ ENV DWO_ENV=app \
     CDN_HOST=cdn.dwo.nl \
     CDNURL=https://cdn.dwo.nl \
     DWO_REDIRECT=true \
-    DWO_ELB=none
+    DWO_ELB=none \
+    PROFILE_EXTENSION=
 
 ENV RDS_DB_NAME=dwo_productie \
     RDS_HOSTNAME=mysql \
