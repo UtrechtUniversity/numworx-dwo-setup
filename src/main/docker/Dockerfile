@@ -5,6 +5,11 @@ VOLUME /usr/local/tomcat/logs
 RUN rm -rf /usr/local/tomcat/webapps/*
 ADD setenv.sh /usr/local/tomcat/bin/setenv.sh
 ADD server.xml /usr/local/tomcat/conf/server.xml
+ADD web.xml /usr/local/tomcat/conf/web.xml
+#Remove version string from HTTP error messages
+#override ServerInfo.properties in catalina.jar
+RUN mkdir -p /usr/local/tomcat/lib/org/apache/catalina/util
+ADD ServerInfo.properties /usr/local/tomcat/lib/org/apache/catalina/util/ServerInfo.properties
 
 ENV CATALINA_OPTS="-Xms512m -Xmx768m"
 
