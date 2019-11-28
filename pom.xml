@@ -4,7 +4,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
 		<revision>2.3.13-SNAPSHOT</revision>
-		<docker.imagePullPolicy>always</docker.imagePullPolicy>
 	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
@@ -119,4 +118,12 @@
 		</plugins>
 	</build>
 	<packaging>pom</packaging>
+	<profiles>
+		<profile>
+			<id>fresh</id>
+			<properties>
+				<docker.imagePullPolicy>always</docker.imagePullPolicy>			
+			</properties>
+		</profile>
+	</profiles>
 </project>
