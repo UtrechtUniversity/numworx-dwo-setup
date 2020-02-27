@@ -97,7 +97,6 @@
 <!-- 								</volumes> -->
 								<links>
 									<link>mysql:mysql</link>
-									<link>smtp:smtp</link>
 								</links>
 								<env>
 									<RDS_PASSWORD>${mysql.password}</RDS_PASSWORD>
