@@ -20,37 +20,15 @@
 			<version>${project.version}</version>
 			<type>war</type>
 		</dependency>
+		<dependency>
+		  <groupId>nl.numworx.osiris</groupId>
+  		  <artifactId>osiris-import</artifactId>
+  		  <version>0.0.4-SNAPSHOT</version>
+  		  <type>war</type>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
-			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
-                <executions>
-                    <execution>
-                        <id>copy</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                       <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>${project.groupId}</groupId>
-                                    <artifactId>EBServer</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>war</type>
-                                    <overWrite>true</overWrite>
-                                    <destFileName>ROOT.war</destFileName>
-                                </artifactItem>
-                            </artifactItems>
-                            <overWriteReleases>true</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                        </configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
@@ -80,6 +58,13 @@
 												</includes>
 												<outputDirectory>.</outputDirectory>
 												<outputFileNameMapping>ROOT.war</outputFileNameMapping>
+											</dependencySet>
+											<dependencySet>
+												<includes>
+													<include>nl.numworx.osiris:osiris-import</include>
+												</includes>
+												<outputDirectory>.</outputDirectory>
+												<outputFileNameMapping>dwo#osiris-import.war</outputFileNameMapping>
 											</dependencySet>
 										</dependencySets>
 									</inline>
