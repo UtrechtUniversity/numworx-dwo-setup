@@ -594,7 +594,11 @@
 
     <session-config>
         <session-timeout>30</session-timeout>
-    </session-config>
+ 		<cookie-config>
+			<http-only>true</http-only>
+			<secure>true</secure>
+		</cookie-config>
+   </session-config>
 
 
   <!-- ===================== Default MIME Type Mappings =================== -->
