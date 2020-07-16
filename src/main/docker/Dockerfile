@@ -37,7 +37,8 @@ ENV SMTP_AUTH=false \
     
 ENV ENV_IPRANGE= \
 	ENV_NOSEB=false \
-	ENV_ORGID=385 
+	ENV_ORGID=385 \
+	UU_DESCRIPTION_TEMPLATE=168946
     
 VOLUME /usr/local/tomcat/webapps
 ADD maven/*.war /usr/local/tomcat/webapps/
