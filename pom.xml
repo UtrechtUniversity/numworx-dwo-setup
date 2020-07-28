@@ -23,7 +23,7 @@
 		<dependency>
 		  <groupId>nl.numworx.osiris</groupId>
   		  <artifactId>osiris-import</artifactId>
-  		  <version>0.0.5</version>
+  		  <version>0.0.6-SNAPSHOT</version>
   		  <type>war</type>
 		</dependency>
 	</dependencies>
