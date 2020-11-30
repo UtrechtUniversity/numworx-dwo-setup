@@ -39,7 +39,9 @@ ENV ENV_IPRANGE= \
 	ENV_NOSEB=false \
 	ENV_ORGID=385 \
 	UU_DESCRIPTION_TEMPLATE=168946 \
-	ALLOW_ORIGIN=*
+	ALLOW_ORIGIN=* \
+	SEB_TOETS_MAC= \
+	SEB_TOETS_WIN= 
     
 VOLUME /usr/local/tomcat/webapps
 ADD maven/*.war /usr/local/tomcat/webapps/
