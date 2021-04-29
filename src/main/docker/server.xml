@@ -93,6 +93,7 @@
 		address="0.0.0.0"
 		secretRequired="false"
     		redirectPort="8443" 
+		allowedRequestAttributesPattern=".*"
     		tomcatAuthentication="false"
     />
 
