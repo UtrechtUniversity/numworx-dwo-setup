@@ -1,4 +1,4 @@
-FROM tomcat:8.5.65
+FROM tomcat:8.5.73-jdk8
 MAINTAINER Wim van Velthoven
 EXPOSE 80 8009
 VOLUME /usr/local/tomcat/logs
@@ -41,7 +41,11 @@ ENV ENV_IPRANGE= \
 	UU_DESCRIPTION_TEMPLATE=168946 \
 	ALLOW_ORIGIN=* \
 	SEB_TOETS_MAC= \
-	SEB_TOETS_WIN= 
+	SEB_TOETS_WIN= \
+	MEMCACHED=localhost:11211 \
+	S3_BUCKET=cds-dev-dwo-nl
     
 VOLUME /usr/local/tomcat/webapps
 ADD maven/*.war /usr/local/tomcat/webapps/
+ADD maven/*.jar /usr/local/tomcat/lib/
+ADD context.xml /usr/local/tomcat/conf/
