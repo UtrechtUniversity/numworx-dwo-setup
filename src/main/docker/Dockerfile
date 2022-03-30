@@ -1,4 +1,4 @@
-FROM tomcat:8.5.73-jdk8
+FROM tomcat:8.5.77-jdk11
 MAINTAINER Wim van Velthoven
 EXPOSE 80 8009
 VOLUME /usr/local/tomcat/logs
