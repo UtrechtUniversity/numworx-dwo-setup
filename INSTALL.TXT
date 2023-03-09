@@ -7,4 +7,4 @@ mvn docker:build docker:run
 
 met traefik label:
 
-docker run -l traefik.frontend.rule=Host:app.docker.localhost -e DWO_REDIRECT=false -e RDS_PASSWORD=E=mc2Dwo -e RDS_DB_NAME=dwo_productie_v1_2 --link mysql:mysql 611429739415.dkr.ecr.eu-west-1.amazonaws.com/dwoproject
+docker run -l traefik.frontend.rule=Host:app.docker.localhost -e DWO_REDIRECT=false -e RDS_PASSWORD=test -e RDS_DB_NAME=dwo_productie_v1_2 --link mysql:mysql 611429739415.dkr.ecr.eu-west-1.amazonaws.com/dwoproject
