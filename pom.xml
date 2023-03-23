@@ -121,7 +121,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	<packaging>docker</packaging>
+	<packaging>docker-build</packaging>
 	<profiles>
 		<profile>
 			<id>fresh</id>
