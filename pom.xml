@@ -5,6 +5,7 @@
 	<properties>
 		<revision>2.5.20-SNAPSHOT</revision>
 		<repository>611429739415.dkr.ecr.eu-west-1.amazonaws.com</repository>
+		<docker.platform>linux/amd64</docker.platform>
 	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
@@ -39,6 +40,7 @@
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.42.0</version>
+				<extensions>true</extensions>
 		        <dependencies>
 		            <dependency>
 		                <groupId>com.amazonaws</groupId>
@@ -46,21 +48,17 @@
 		                <version>1.11.707</version>
 		            </dependency>
 		        </dependencies>
-				<executions>
-					<execution>
-						<id>build</id>
-						<phase>package</phase>
-						<goals>
-							<goal>build</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
 					<images>
 						<image>
 							<alias>ebdocker</alias>
 							<name>${repository}/dwoproject:%l</name>
 							<build>
+						        <buildx>
+						          <platforms>
+						            <platform>${docker.platform}</platform>
+						          </platforms>
+						        </buildx>
 								<dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
 								<assembly>
 									<inline>
@@ -123,7 +121,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	<packaging>pom</packaging>
+	<packaging>docker</packaging>
 	<profiles>
 		<profile>
 			<id>fresh</id>
@@ -135,6 +133,18 @@
 			<id>azure</id>
 			<properties>
 				<repository>numworx.azurecr.io</repository>
+			</properties>
+		</profile>
+		<profile>
+			<id>arm64</id>
+			<properties>
+				<docker.platform>linux/arm64</docker.platform>
+			</properties>
+		</profile>
+		<profile>
+			<id>local</id>
+			<properties>
+				<docker.platform></docker.platform>
 			</properties>
 		</profile>
 	</profiles>
