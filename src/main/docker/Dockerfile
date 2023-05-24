@@ -16,7 +16,7 @@ ENV CATALINA_OPTS="-Xms512m -Xmx768m"
 ENV DWO_ENV=app \
     CDN_HOST=cdn.dwo.nl \
     CDNURL=https://cdn.dwo.nl \
-    DWO_REDIRECT=true \
+    DWO_REDIRECT=false \
     DWO_ELB=none \
     PROFILE_EXTENSION=
 
