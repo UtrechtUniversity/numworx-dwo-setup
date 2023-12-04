@@ -6,6 +6,7 @@
 		<revision>2.5.23-SNAPSHOT</revision>
 		<repository>611429739415.dkr.ecr.eu-west-1.amazonaws.com</repository>
 		<docker.platform>linux/amd64</docker.platform>
+		<mysql.username>root</mysql.username>
 	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
@@ -104,11 +105,14 @@
 								</links>
 								<env>
 									<RDS_PASSWORD>${mysql.password}</RDS_PASSWORD>
+									<RDS_USERNAME>${mysql.username}</RDS_USERNAME>
 									<RDS_DB_NAME>${mysql.database}</RDS_DB_NAME>
 									<DWO_REDIRECT>false</DWO_REDIRECT>
 									<ENV_NOSEB>true</ENV_NOSEB>
 									<ENV_IPRANGE>172.17.0.1</ENV_IPRANGE>
 									<MEMCACHED>memcached:11211</MEMCACHED>
+									<ALLOW_ORIGIN>http://localhost:8080</ALLOW_ORIGIN>
+									<DWO_ENV>test,entree</DWO_ENV>
 								</env>
 								<labels>
 									<traefik.frontend.rule>Host:app.docker.localhost</traefik.frontend.rule>
