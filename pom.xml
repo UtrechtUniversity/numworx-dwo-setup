@@ -110,12 +110,12 @@
 									<RDS_DB_NAME>${mysql.database}</RDS_DB_NAME>
 									<DWO_REDIRECT>false</DWO_REDIRECT>
 									<ENV_NOSEB>true</ENV_NOSEB>
-									<UU_INDEX>/WEB-INF/uuindex.jsp</UU_INDEX>
-									<UU_DOWNLOAD>/WEB-INF/accdownload.html</UU_DOWNLOAD>
+<!--									<UU_INDEX>/WEB-INF/uuindex.jsp</UU_INDEX>-->
+<!--									<UU_DOWNLOAD>/WEB-INF/accdownload.html</UU_DOWNLOAD>-->
 									<ENV_IPRANGE>172.17.0.1</ENV_IPRANGE>
 									<MEMCACHED>test:memcached:11211</MEMCACHED>
 									<ALLOW_ORIGIN>http://localhost:8080</ALLOW_ORIGIN>
-									<DWO_ENV>uusaml</DWO_ENV>
+<!--									<DWO_ENV>uusaml</DWO_ENV>-->
 								</env>
 								<labels>
 									<traefik.frontend.rule>Host:app.docker.localhost</traefik.frontend.rule>
