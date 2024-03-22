@@ -1,4 +1,4 @@
-FROM tomcat:8.5.77-jdk11
+FROM tomcat:9.0-jdk11
 MAINTAINER Wim van Velthoven
 EXPOSE 80 8009
 VOLUME /usr/local/tomcat/logs
@@ -11,7 +11,7 @@ ADD web.xml /usr/local/tomcat/conf/web.xml
 RUN mkdir -p /usr/local/tomcat/lib/org/apache/catalina/util
 ADD ServerInfo.properties /usr/local/tomcat/lib/org/apache/catalina/util/ServerInfo.properties
 
-ENV CATALINA_OPTS="-Xms512m -Xmx768m"
+ENV CATALINA_OPTS="-Xms768m -Xmx768m"
 
 ENV DWO_ENV=app \
     CDN_HOST=cdn.dwo.nl \

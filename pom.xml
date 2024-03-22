@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-		<revision>2.5.29</revision>
-		<repository>numworx.azurecr.io</repository>
+		<revision>2.5.31-SNAPSHOT</revision>
+		<repository>numworx.azurecr.io/</repository>
 		<docker.platform>linux/amd64</docker.platform>
 		<mysql.username>root</mysql.username>
 		<mysql.password>test</mysql.password>
@@ -32,7 +32,7 @@
 		</dependency>
 		<dependency>
 		    <groupId>de.javakaffee.msm</groupId>
-		    <artifactId>memcached-session-manager-tc8</artifactId>
+		    <artifactId>memcached-session-manager-tc9</artifactId>
 		    <version>2.3.2</version>
 		</dependency>
 	</dependencies>
@@ -54,7 +54,7 @@
 					<images>
 						<image>
 							<alias>ebdocker</alias>
-							<name>${repository}/dwoproject:%l</name>
+							<name>${repository}dwoproject:%l</name>
 							<build>
 						        <buildx>
 						          <platforms>
@@ -101,13 +101,14 @@
 <!-- 									</bind> -->
 <!-- 								</volumes> -->
 								<links>
-									<link>mysql:mysql</link>
+<!--									<link>mysql:mysql</link>-->
 									<link>memcached:memcached</link>
 								</links>
 								<env>
 									<RDS_PASSWORD>${mysql.password}</RDS_PASSWORD>
 									<RDS_USERNAME>${mysql.username}</RDS_USERNAME>
 									<RDS_DB_NAME>${mysql.database}</RDS_DB_NAME>
+									<RDS_HOSTNAME>${mysql.host}</RDS_HOSTNAME>
 									<DWO_REDIRECT>false</DWO_REDIRECT>
 									<ENV_NOSEB>true</ENV_NOSEB>
 <!--									<UU_INDEX>/WEB-INF/uuindex.jsp</UU_INDEX>-->
@@ -137,11 +138,6 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>azure</id>
-			<properties>
-			</properties>
-		</profile>
-		<profile>
 			<id>arm64</id>
 			<properties>
 				<docker.platform>linux/arm64</docker.platform>
@@ -151,6 +147,7 @@
 			<id>local</id>
 			<properties>
 				<docker.platform></docker.platform>
+				<repository/>
 			</properties>
 		</profile>
 	</profiles>
