@@ -34,8 +34,8 @@
 	    requestUriIgnorePattern=".*\.(png|gif|jpg|css|js|ico)$"
 	    sessionBackupAsync="false"
 	    sessionBackupTimeout="100"
-	    sticky="false"
     />
+<!-- 	    sticky="false"  werkt niet goed bij amazon, toch maar sticky = true gebruiken -->
     
     
 </Context>
