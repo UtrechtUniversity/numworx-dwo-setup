@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-		<revision>2.5.31-SNAPSHOT</revision>
+		<revision>2.5.32-SNAPSHOT</revision>
 		<repository>numworx.azurecr.io/</repository>
 		<docker.platform>linux/amd64</docker.platform>
 		<mysql.username>root</mysql.username>
@@ -35,6 +35,12 @@
 		    <artifactId>memcached-session-manager-tc9</artifactId>
 		    <version>2.3.2</version>
 		</dependency>
+		<dependency>
+		    <groupId>nl.numworx.schoolyear</groupId>
+		    <artifactId>sy</artifactId>
+		    <version>2.5.32-SNAPSHOT</version>
+		    <type>war</type>
+	        </dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -79,6 +85,13 @@
 												<outputDirectory>.</outputDirectory>
 												<outputFileNameMapping>dwo#osiris-import.war</outputFileNameMapping>
 											</dependencySet>
+        <dependencySet>
+	  <includes>
+		<include>nl.numworx.schoolyear:sy</include>
+	  </includes>
+	  <outputDirectory>.</outputDirectory>
+	  <outputFileNameMapping>sy.war</outputFileNameMapping>
+	</dependencySet>
 											<dependencySet>
 												<includes>
 													<include>de.javakaffee.msm:*</include>
@@ -111,12 +124,12 @@
 									<RDS_HOSTNAME>${mysql.host}</RDS_HOSTNAME>
 									<DWO_REDIRECT>false</DWO_REDIRECT>
 									<ENV_NOSEB>true</ENV_NOSEB>
-<!--									<UU_INDEX>/WEB-INF/uuindex.jsp</UU_INDEX>-->
+									<UU_INDEX>/WEB-INF/uuindex.jsp</UU_INDEX>
 <!--									<UU_DOWNLOAD>/WEB-INF/accdownload.html</UU_DOWNLOAD>-->
 									<ENV_IPRANGE>172.17.0.1</ENV_IPRANGE>
 									<MEMCACHED>test:memcached:11211</MEMCACHED>
 									<ALLOW_ORIGIN>http://localhost:8080</ALLOW_ORIGIN>
-<!--									<DWO_ENV>uusaml</DWO_ENV>-->
+									<DWO_ENV>testkiosk</DWO_ENV>
 								</env>
 								<labels>
 									<traefik.frontend.rule>Host:app.docker.localhost</traefik.frontend.rule>
