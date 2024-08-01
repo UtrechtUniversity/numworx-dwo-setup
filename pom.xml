@@ -8,6 +8,8 @@
 		<docker.platform>linux/amd64</docker.platform>
 		<mysql.username>root</mysql.username>
 		<mysql.password>test</mysql.password>
+                <mysql.host>mysql</mysql.host>
+		<mysql.database>dwo_productie_v1_2</mysql.database>
 	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
@@ -114,7 +116,7 @@
 <!-- 									</bind> -->
 <!-- 								</volumes> -->
 								<links>
-<!--									<link>mysql:mysql</link>-->
+									<link>mysql:mysql</link>
 									<link>memcached:memcached</link>
 								</links>
 								<env>
