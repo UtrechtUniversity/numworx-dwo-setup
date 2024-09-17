@@ -29,13 +29,10 @@
     <Manager pathname="" />
     -->
     
-        <Manager className="de.javakaffee.web.msm.MemcachedBackupSessionManager"
-	    memcachedNodes="${MEMCACHED}"
-	    requestUriIgnorePattern=".*\.(png|gif|jpg|css|js|ico)$"
-	    sessionBackupAsync="false"
-	    sessionBackupTimeout="100"
-    />
-<!-- 	    sticky="false"  werkt niet goed bij amazon, toch maar sticky = true gebruiken -->
-    
+  <Manager className="org.redisson.tomcat.RedissonSessionManager" 
+            configPath="${catalina.base}/conf/redisson.yaml" 
+            readMode="MEMORY" 
+            updateMode="DEFAULT"
+  />
     
 </Context>

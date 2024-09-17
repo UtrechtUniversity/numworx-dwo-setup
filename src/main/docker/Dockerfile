@@ -42,11 +42,13 @@ ENV ENV_IPRANGE= \
 	ALLOW_ORIGIN=* \
 	SEB_TOETS_MAC= \
 	SEB_TOETS_WIN= \
-	MEMCACHED=localhost:11211 \
-	S3_BUCKET=cds-dev-dwo-nl
+	S3_BUCKET=cds-dev-dwo-nl \
+	REDIS=redis:6379 \
+	REDISS=redis
     
 VOLUME /usr/local/tomcat/webapps
 ADD maven/*.war /usr/local/tomcat/webapps/
 ADD maven/*.jar /usr/local/tomcat/lib/
 ADD context.xml /usr/local/tomcat/conf/
 ADD logging.properties /usr/local/tomcat/conf/
+ADD redisson.yaml /usr/local/tomcat/conf/

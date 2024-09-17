@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-		<revision>2.5.34-SNAPSHOT</revision>
+		<revision>2.5.35-SNAPSHOT</revision>
 		<repository>numworx.azurecr.io/</repository>
 		<docker.platform>linux/amd64</docker.platform>
 		<mysql.username>root</mysql.username>
@@ -32,11 +32,26 @@
   		  <version>2.5.32</version>
   		  <type>war</type>
 		</dependency>
-		<dependency>
-		    <groupId>de.javakaffee.msm</groupId>
-		    <artifactId>memcached-session-manager-tc9</artifactId>
-		    <version>2.3.2</version>
-		</dependency>
+				<dependency>
+    				<groupId>nl.uu.fi.dwo.rest</groupId>
+					<artifactId>redis-config</artifactId>
+					<version>2.5.34</version>
+				</dependency>
+				<dependency>
+					<groupId>org.redisson</groupId>
+					<artifactId>redisson-tomcat-9</artifactId>
+					<version>3.22.1</version>
+				</dependency>
+				<dependency>
+					<groupId>org.redisson</groupId>
+					<artifactId>redisson-all</artifactId>
+					<version>3.22.1</version>
+				</dependency>
+				<dependency>
+				    <groupId>org.slf4j</groupId>
+				    <artifactId>slf4j-jdk14</artifactId>
+    				<version>1.7.36</version>
+				</dependency>
 		<dependency>
 		    <groupId>nl.numworx.schoolyear</groupId>
 		    <artifactId>sy</artifactId>
@@ -96,8 +111,10 @@
 	</dependencySet>
 											<dependencySet>
 												<includes>
-													<include>de.javakaffee.msm:*</include>
-													<include>net.spy:*</include>
+													<include>nl.uu.fi.dwo.rest:redis-config</include>
+													<include>org.redisson:redisson-all</include>
+													<include>org.redisson:redisson-tomcat-9</include>
+													<include>org.slf4j:slf4j-jdk14</include>
 												</includes>
 												<outputDirectory>.</outputDirectory>
 											</dependencySet>
@@ -117,7 +134,7 @@
 <!-- 								</volumes> -->
 								<links>
 									<link>mysql:mysql</link>
-									<link>memcached:memcached</link>
+									<link>redis:redis</link>
 								</links>
 								<env>
 									<RDS_PASSWORD>${mysql.password}</RDS_PASSWORD>
@@ -126,11 +143,11 @@
 									<RDS_HOSTNAME>${mysql.host}</RDS_HOSTNAME>
 									<DWO_REDIRECT>false</DWO_REDIRECT>
 									<ENV_NOSEB>true</ENV_NOSEB>
-									<UU_INDEX>/WEB-INF/uuindex.jsp</UU_INDEX>
+<!--									<UU_INDEX>/WEB-INF/uuindex.jsp</UU_INDEX>-->
 <!--									<UU_DOWNLOAD>/WEB-INF/accdownload.html</UU_DOWNLOAD>-->
 									<ENV_IPRANGE>172.17.0.1</ENV_IPRANGE>
-									<MEMCACHED>test:memcached:11211</MEMCACHED>
 									<ALLOW_ORIGIN>http://localhost:8080</ALLOW_ORIGIN>
+									<REDIS>redis:6379</REDIS>
 									<DWO_ENV>testkiosk</DWO_ENV>
 								</env>
 								<labels>
