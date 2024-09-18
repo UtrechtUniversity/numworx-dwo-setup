@@ -44,7 +44,8 @@ ENV ENV_IPRANGE= \
 	SEB_TOETS_WIN= \
 	S3_BUCKET=cds-dev-dwo-nl \
 	REDIS=redis:6379 \
-	REDISS=redis
+	REDISS=redis \
+	REDIS_PREFIX=
     
 VOLUME /usr/local/tomcat/webapps
 ADD maven/*.war /usr/local/tomcat/webapps/
