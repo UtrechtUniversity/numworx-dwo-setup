@@ -1,6 +1,6 @@
 FROM tomcat:9.0-jdk11
 MAINTAINER Wim van Velthoven
-EXPOSE 80 8009
+EXPOSE 80
 VOLUME /usr/local/tomcat/logs
 RUN rm -rf /usr/local/tomcat/webapps/*
 ADD setenv.sh /usr/local/tomcat/bin/setenv.sh
