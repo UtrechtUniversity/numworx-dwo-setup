@@ -55,7 +55,7 @@
 		<dependency>
 		    <groupId>nl.numworx.schoolyear</groupId>
 		    <artifactId>sy</artifactId>
-		    <version>2.5.34-SNAPSHOT</version>
+		    <version>2.5.34</version>
 		    <type>war</type>
 	        </dependency>
 	</dependencies>
