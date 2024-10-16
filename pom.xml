@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-		<revision>2.5.35-SNAPSHOT</revision>
+		<revision>2.5.36-SNAPSHOT</revision>
 		<repository>numworx.azurecr.io/</repository>
 		<docker.platform>linux/amd64</docker.platform>
 		<mysql.username>root</mysql.username>
@@ -147,7 +147,7 @@
 									<ENV_IPRANGE>172.17.0.1</ENV_IPRANGE>
 									<ALLOW_ORIGIN>http://localhost:8080</ALLOW_ORIGIN>
 									<REDIS>redis:6379</REDIS>
-									<DWO_ENV>testkiosk</DWO_ENV>
+									<DWO_ENV>testkioskentree</DWO_ENV>
 								</env>
 								<labels>
 									<traefik.frontend.rule>Host:app.docker.localhost</traefik.frontend.rule>
