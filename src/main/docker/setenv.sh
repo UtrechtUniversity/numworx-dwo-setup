@@ -1,3 +1,5 @@
+export CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=localhost -Dcom.sun.management.jmxremote.rmi.port=9999 -Dcom.sun.management.jmxremote.local.only=false"
+### -Dcom.sun.management.jmxremote.host=0.0.0.0
 CATALINA_OPTS="$CATALINA_OPTS -DDWO_ENV=$DWO_ENV"
 CATALINA_OPTS="$CATALINA_OPTS -DCDN_HOST=$CDN_HOST"
 CATALINA_OPTS="$CATALINA_OPTS -DCDNURL=$CDNURL"
@@ -38,3 +40,4 @@ CATALINA_OPTS="$CATALINA_OPTS -DREDIS_PREFIX=$REDIS_PREFIX"
 
 
 CATALINA_OPTS="$CATALINA_OPTS -Djava.security.egd=file:/dev/./urandom"
+
