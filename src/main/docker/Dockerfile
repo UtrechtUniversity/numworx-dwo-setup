@@ -1,5 +1,5 @@
 FROM tomcat:9.0-jdk11
-MAINTAINER Wim van Velthoven
+LABEL org.opencontainers.image.authors="Wim van Velthoven"
 EXPOSE 80 9999
 VOLUME /usr/local/tomcat/logs
 RUN rm -rf /usr/local/tomcat/webapps/*
