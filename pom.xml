@@ -3,13 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-		<revision>2.5.37-SNAPSHOT</revision>
+		<revision>2.5.38-SNAPSHOT</revision>
 		<repository>numworx.azurecr.io/</repository>
 		<docker.platform>linux/amd64</docker.platform>
 		<mysql.username>root</mysql.username>
 		<mysql.password>test</mysql.password>
                 <mysql.host>mysql</mysql.host>
 		<mysql.database>dwo_productie_v1_2</mysql.database>
+		<upload>uploadwidget-local</upload>
 	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
@@ -57,7 +58,13 @@
 		    <artifactId>sy</artifactId>
 		    <version>2.5.34</version>
 		    <type>war</type>
-	        </dependency>
+	    </dependency>
+	    <dependency>
+			<groupId>nl.numworx.uploadwidget</groupId>
+			<artifactId>${upload}</artifactId>
+			<version>2.5.34</version>
+            <type>war</type>
+		</dependency>
 	</dependencies>
 	<build>
 		<pluginManagement>
@@ -136,6 +143,11 @@
 													<include>org.slf4j:slf4j-jdk14</include>
 												</includes>
 												<outputDirectory>.</outputDirectory>
+											</dependencySet>
+											<dependencySet>
+												<includes>nl.numworx.uploadwidget:${upload}</includes>
+												<outputDirectory>.</outputDirectory>
+												<outputFileNameMapping>dwo#dav#upload.war</outputFileNameMapping>
 											</dependencySet>
 										</dependencySets>
 									</inline>
