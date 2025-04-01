@@ -48,8 +48,8 @@ ENV ENV_IPRANGE= \
 	REDIS_PREFIX=
     
 VOLUME /usr/local/tomcat/webapps
-ADD maven/*.war /usr/local/tomcat/webapps/
-ADD maven/*.jar /usr/local/tomcat/lib/
 ADD context.xml /usr/local/tomcat/conf/
 ADD logging.properties /usr/local/tomcat/conf/
 ADD redisson.yaml /usr/local/tomcat/conf/
+ADD maven/*.jar /usr/local/tomcat/lib/
+ADD maven/*.war /usr/local/tomcat/webapps/
