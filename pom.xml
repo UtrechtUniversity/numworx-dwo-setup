@@ -27,12 +27,6 @@
 			<version>${project.version}</version>
 			<type>war</type>
 		</dependency>
-		<dependency>
-		  <groupId>nl.numworx.osiris</groupId>
-  		  <artifactId>osiris-import</artifactId>
-  		  <version>2.5.32</version>
-  		  <type>war</type>
-		</dependency>
 				<dependency>
     				<groupId>nl.uu.fi.dwo.rest</groupId>
 					<artifactId>redis-config</artifactId>
@@ -58,18 +52,6 @@
 				    <artifactId>slf4j-api</artifactId>
     				<version>1.7.36</version>
 				</dependency>
-		<dependency>
-		    <groupId>nl.numworx.schoolyear</groupId>
-		    <artifactId>sy</artifactId>
-		    <version>2.5.34</version>
-		    <type>war</type>
-	    </dependency>
-	    <dependency>
-			<groupId>nl.numworx.uploadwidget</groupId>
-			<artifactId>${upload}</artifactId>
-			<version>2.5.37</version>
-            <type>war</type>
-		</dependency>
 	</dependencies>
 	<build>
 		<pluginManagement>
@@ -133,13 +115,13 @@
 												<outputDirectory>.</outputDirectory>
 												<outputFileNameMapping>dwo#osiris-import.war</outputFileNameMapping>
 											</dependencySet>
-        <dependencySet>
-	  <includes>
-		<include>nl.numworx.schoolyear:sy</include>
-	  </includes>
-	  <outputDirectory>.</outputDirectory>
-	  <outputFileNameMapping>sy.war</outputFileNameMapping>
-	</dependencySet>
+									        <dependencySet>
+											  <includes>
+												<include>nl.numworx.schoolyear:sy</include>
+											  </includes>
+											  <outputDirectory>.</outputDirectory>
+											  <outputFileNameMapping>sy.war</outputFileNameMapping>
+											</dependencySet>
 											<dependencySet>
 												<includes>
 													<include>nl.uu.fi.dwo.rest:redis-config</include>
@@ -218,6 +200,14 @@
 				<docker.platform></docker.platform>
 				<repository/>
 			</properties>
+			<dependencies>
+				 <dependency>
+					<groupId>nl.numworx.uploadwidget</groupId>
+					<artifactId>${upload}</artifactId>
+					<version>2.5.37</version>
+		            <type>war</type>
+				</dependency>
+			</dependencies>
 		</profile>
 		<profile>
 			<id>aws</id>
@@ -230,6 +220,33 @@
 			<properties>
 				<repository>rg.nl-ams.scw.cloud/numworx/</repository>
 			</properties>		
+		</profile>
+		<profile>
+			<id>azure</id>
+			<activation><activeByDefault>true</activeByDefault></activation>
+			<properties>
+				<upload>uploadwidget-local</upload>
+			</properties>
+			<dependencies>
+				<dependency>
+				    <groupId>nl.numworx.schoolyear</groupId>
+				    <artifactId>sy</artifactId>
+				    <version>2.5.34</version>
+				    <type>war</type>
+			    </dependency>
+				<dependency>
+				  <groupId>nl.numworx.osiris</groupId>
+		  		  <artifactId>osiris-import</artifactId>
+		  		  <version>2.5.32</version>
+		  		  <type>war</type>
+				</dependency>			
+			    <dependency>
+					<groupId>nl.numworx.uploadwidget</groupId>
+					<artifactId>${upload}</artifactId>
+					<version>2.5.37</version>
+		            <type>war</type>
+				</dependency>
+			</dependencies>
 		</profile>
 	</profiles>
 </project>
