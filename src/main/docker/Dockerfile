@@ -43,6 +43,7 @@ ENV ENV_IPRANGE= \
 	SEB_TOETS_MAC= \
 	SEB_TOETS_WIN= \
 	S3_BUCKET=cds-dev-dwo-nl \
+	AZ_SHAREDKEY= \
 	REDIS=redis:6379 \
 	REDISS=redis \
 	REDIS_PREFIX=
