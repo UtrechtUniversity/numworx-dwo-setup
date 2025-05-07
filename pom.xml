@@ -154,6 +154,7 @@
 								<links>
 									<link>mysql:mysql</link>
 									<link>redis:redis</link>
+									<link>azurite:azurite</link>
 								</links>
 								<env>
 									<RDS_PASSWORD>${mysql.password}</RDS_PASSWORD>
@@ -168,6 +169,9 @@
 									<ALLOW_ORIGIN>http://localhost:8080</ALLOW_ORIGIN>
 									<REDIS>redis:6379</REDIS>
 									<DWO_ENV>testkioskentree</DWO_ENV>
+                    				<AZ_ENDPOINT>http://azurite:10000/devstoreaccount1/</AZ_ENDPOINT>
+                    				<AZ_SHAREDKEY>Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==</AZ_SHAREDKEY>
+                    				<S3_BUCKET>devstoreaccount1</S3_BUCKET>
 								</env>
 								<labels>
 									<traefik.frontend.rule>Host:app.docker.localhost</traefik.frontend.rule>
