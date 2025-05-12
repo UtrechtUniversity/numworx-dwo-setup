@@ -74,6 +74,28 @@
 			</plugins>			
 		</pluginManagement>
 		<plugins>
+		      <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-dependency-plugin</artifactId>
+		        <version>3.8.1</version>
+		        <executions>
+		          <execution>
+		            <id>unpack-dependencies</id>
+		            <phase>compile</phase>
+		            <goals>
+		              <goal>unpack-dependencies</goal>
+		            </goals>
+		            <configuration>
+		              <includeArtifactIds>EBServer</includeArtifactIds>
+		              <includeTypes>war</includeTypes>
+		              <outputDirectory>${project.build.directory}/webapps/ROOT</outputDirectory>
+		              <overWriteReleases>true</overWriteReleases>
+		              <overWriteSnapshots>true</overWriteSnapshots>
+		            </configuration>
+		          </execution>
+		        </executions>
+		      </plugin>
+
 			<plugin>
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
@@ -100,14 +122,20 @@
 								<dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
 								<assembly>
 									<inline>
+									    <fileSets>
+									    	<fileSet>
+									    		<directory>${project.build.directory}/webapps</directory>
+									    		<outputDirectory>webapps</outputDirectory>
+									    	</fileSet>
+									    </fileSets>
 										<dependencySets>
-											<dependencySet>
-												<includes>
-													<include>${project.groupId}:EBServer</include>
-												</includes>
-												<outputDirectory>.</outputDirectory>
-												<outputFileNameMapping>ROOT.war</outputFileNameMapping>
-											</dependencySet>
+<!--											<dependencySet>-->
+<!--												<includes>-->
+<!--													<include>${project.groupId}:EBServer</include>-->
+<!--												</includes>-->
+<!--												<outputDirectory>.</outputDirectory>-->
+<!--												<outputFileNameMapping>ROOT.war</outputFileNameMapping>-->
+<!--											</dependencySet>-->
 											<dependencySet>
 												<includes>
 													<include>nl.numworx.osiris:osiris-import</include>
@@ -155,6 +183,7 @@
 									<link>mysql:mysql</link>
 									<link>redis:redis</link>
 									<link>azurite:azurite</link>
+									<link>s3-ninja:s3-ninja</link>
 								</links>
 								<env>
 									<RDS_PASSWORD>${mysql.password}</RDS_PASSWORD>
@@ -172,6 +201,9 @@
                     				<AZ_ENDPOINT>http://azurite:10000/devstoreaccount1/</AZ_ENDPOINT>
                     				<AZ_SHAREDKEY>Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==</AZ_SHAREDKEY>
                     				<S3_BUCKET>devstoreaccount1</S3_BUCKET>
+									<SCW_ENDPOINT>http://s3-ninja:9000/s3/</SCW_ENDPOINT>
+									<AWS_ACCESS_KEY_ID>AKIAIOSFODNN7EXAMPLE</AWS_ACCESS_KEY_ID>
+									<AWS_SECRET_ACCESS_KEY>wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</AWS_SECRET_ACCESS_KEY>
 								</env>
 								<labels>
 									<traefik.frontend.rule>Host:app.docker.localhost</traefik.frontend.rule>
@@ -202,13 +234,14 @@
 			<id>local</id>
 			<properties>
 				<docker.platform></docker.platform>
+				<upload>UploadWidgetGWT</upload>
 				<repository/>
 			</properties>
 			<dependencies>
 				 <dependency>
 					<groupId>nl.numworx.uploadwidget</groupId>
 					<artifactId>${upload}</artifactId>
-					<version>2.5.37</version>
+					<version>2.5.42-SNAPSHOT</version>
 		            <type>war</type>
 				</dependency>
 			</dependencies>

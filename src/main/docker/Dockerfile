@@ -8,7 +8,7 @@ ADD server.xml /usr/local/tomcat/conf/server.xml
 ADD web.xml /usr/local/tomcat/conf/web.xml
 #Remove version string from HTTP error messages
 #override ServerInfo.properties in catalina.jar
-RUN mkdir -p /usr/local/tomcat/lib/org/apache/catalina/util
+#RUN mkdir -p /usr/local/tomcat/lib/org/apache/catalina/util
 ADD ServerInfo.properties /usr/local/tomcat/lib/org/apache/catalina/util/ServerInfo.properties
 
 ENV CATALINA_OPTS="-Xms768m -Xmx768m"
@@ -18,24 +18,21 @@ ENV DWO_ENV=app \
     CDNURL=https://cdn.dwo.nl \
     DWO_REDIRECT=false \
     DWO_ELB=none \
-    PROFILE_EXTENSION=
-
-ENV RDS_DB_NAME=dwo_productie \
+    PROFILE_EXTENSION= \
+    RDS_DB_NAME=dwo_productie \
     RDS_HOSTNAME=mysql \
     RDS_PASSWORD=test \
     RDS_PORT=3306 \
-    RDS_USERNAME=root
-
-ENV SMTP_AUTH=false \
+    RDS_USERNAME=root \
+    SMTP_AUTH=false \
     SMTP_EMAIL=fi.wisweb-l@lists.science.uu.nl \
     SMTP_PASSWORD=none \
     SMTP_PORT=25 \
     SMTP_SERVER=smtp \
     SMTP_TLS=no \
     SMTP_SSL=false \
-    SMTP_USER=root
-    
-ENV ENV_IPRANGE= \
+    SMTP_USER=root \
+    ENV_IPRANGE= \
 	ENV_NOSEB=false \
 	ENV_ORGID=385 \
 	UU_DESCRIPTION_TEMPLATE=168946 \
@@ -54,3 +51,5 @@ ADD logging.properties /usr/local/tomcat/conf/
 ADD redisson.yaml /usr/local/tomcat/conf/
 ADD maven/*.jar /usr/local/tomcat/lib/
 ADD maven/*.war /usr/local/tomcat/webapps/
+ADD maven/webapps/  /usr/local/tomcat/webapps/
+
