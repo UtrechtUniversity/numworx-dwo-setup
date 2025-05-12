@@ -201,7 +201,7 @@
                     				<AZ_ENDPOINT>http://azurite:10000/devstoreaccount1/</AZ_ENDPOINT>
                     				<AZ_SHAREDKEY>Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==</AZ_SHAREDKEY>
                     				<S3_BUCKET>devstoreaccount1</S3_BUCKET>
-									<SCW_ENDPOINT>http://s3-ninja:9000/s3/</SCW_ENDPOINT>
+									<SCW_ENDPOINT>http://s3-ninja:9000/</SCW_ENDPOINT>
 									<AWS_ACCESS_KEY_ID>AKIAIOSFODNN7EXAMPLE</AWS_ACCESS_KEY_ID>
 									<AWS_SECRET_ACCESS_KEY>wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</AWS_SECRET_ACCESS_KEY>
 								</env>
