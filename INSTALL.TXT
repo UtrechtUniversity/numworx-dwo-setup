@@ -11,7 +11,7 @@ docker run -l traefik.frontend.rule=Host:app.docker.localhost -e DWO_REDIRECT=fa
 
 
 s3 emulator
-	docker run -p 9444:9000 -d --name s3ninja scireum/s3-ninja:8.3.2
+	docker run -p 9444:9000 -d --name s3-ninja scireum/s3-ninja:8.3.2
 	export AWS_ENDPOINT = http://s3ninja:9000/s3/
 	
 azure emulator
