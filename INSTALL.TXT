@@ -17,3 +17,4 @@ s3 emulator
 azure emulator
 	docker run ... --name azurite 
 	export AZ_ENDPOINT = http://azurite:100000/${account)/${container}
+	docker run -p 10000:10000 --name azurite -d mcr.microsoft.com/azure-storage/azurite
