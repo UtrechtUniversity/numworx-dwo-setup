@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-		<revision>2.5.42</revision>
+		<revision>2.5.44</revision>
 		<repository>numworx.azurecr.io/</repository>
 		<docker.platform>linux/amd64</docker.platform>
 		<mysql.username>root</mysql.username>
@@ -209,6 +209,9 @@
 									<traefik.frontend.rule>Host:app.docker.localhost</traefik.frontend.rule>
 								</labels>
 								<namingStrategy>alias</namingStrategy>
+								<volumes>
+									<bind>tomcat-logs:/usr/local/tomcat/logs</bind>
+								</volumes>
 							</run>
 						</image>
 					</images>
