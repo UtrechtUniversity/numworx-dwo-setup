@@ -1,5 +1,11 @@
-installeren in AWS docker registry:
+installeren in azure docker registry:
+az acr login -n numworx
 mvn -Drevision=2.3.1 docker:build docker:push
+
+install into github (multiplatform)
+docker login ghcr.io -u wimvvelt -p $GITHUB_TOKEN
+mvn -Pgithub verify docker:push
+
 
 Zorg dat de mysql draait.
 runnen:

@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-		<revision>2.5.46</revision>
+		<revision>2.5.47</revision>
 		<repository>numworx.azurecr.io/</repository>
 		<docker.platform>linux/amd64</docker.platform>
 		<mysql.username>root</mysql.username>
@@ -14,44 +14,44 @@
 	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
-		<artifactId>DWO.master.pom</artifactId>
-		<version>1.1</version>
+		<artifactId>dwo.master.pom</artifactId>
+		<version>2.5.47</version>
 	</parent>
-	<artifactId>EBDocker</artifactId>
+	<artifactId>ebdocker</artifactId>
 	<version>${revision}</version>
-	<name>Docker voor EBServer</name>
+	<name>Docker Container voor EBServer</name>
 	<dependencies>
 		<dependency>
 			<groupId>nl.uu.fi.dwo</groupId>
-			<artifactId>EBServer</artifactId>
+			<artifactId>ebserver</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
 		</dependency>
-				<dependency>
-    				<groupId>nl.uu.fi.dwo.rest</groupId>
-					<artifactId>redis-config</artifactId>
-					<version>2.5.37</version>
-				</dependency>
-				<dependency>
-					<groupId>org.redisson</groupId>
-					<artifactId>redisson-tomcat-9</artifactId>
-					<version>3.22.1</version>
-				</dependency>
-				<dependency>
-					<groupId>org.redisson</groupId>
-					<artifactId>redisson-all</artifactId>
-					<version>3.22.1</version>
-				</dependency>
-				<dependency>
-				    <groupId>org.slf4j</groupId>
-				    <artifactId>slf4j-jdk14</artifactId>
-    				<version>1.7.36</version>
-				</dependency>
-				<dependency>
-				    <groupId>org.slf4j</groupId>
-				    <artifactId>slf4j-api</artifactId>
-    				<version>1.7.36</version>
-				</dependency>
+		<dependency>
+   			<groupId>nl.uu.fi.dwo.rest</groupId>
+			<artifactId>redis-config</artifactId>
+			<version>2.5.47</version>
+		</dependency>
+		<dependency>
+			<groupId>org.redisson</groupId>
+			<artifactId>redisson-tomcat-9</artifactId>
+			<version>3.22.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.redisson</groupId>
+			<artifactId>redisson-all</artifactId>
+			<version>3.22.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-jdk14</artifactId>
+    		<version>1.7.36</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+    		<version>1.7.36</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<pluginManagement>
@@ -86,7 +86,7 @@
 		              <goal>unpack-dependencies</goal>
 		            </goals>
 		            <configuration>
-		              <includeArtifactIds>EBServer</includeArtifactIds>
+		              <includeArtifactIds>ebserver</includeArtifactIds>
 		              <includeTypes>war</includeTypes>
 		              <outputDirectory>${project.build.directory}/webapps/ROOT</outputDirectory>
 		              <overWriteReleases>true</overWriteReleases>
@@ -220,6 +220,13 @@
 		</plugins>
 	</build>
 	<packaging>docker-build</packaging>
+  	<repositories>
+    	<repository>
+			<id>numworx-dwo-project</id>
+			<url>https://maven.pkg.github.com/UtrechtUniversity/numworx-dwo-project</url>
+			<snapshots><enabled>true</enabled></snapshots>
+    	</repository>
+    </repositories>
 	<profiles>
 		<profile>
 			<id>fresh</id>
@@ -237,14 +244,14 @@
 			<id>local</id>
 			<properties>
 				<docker.platform></docker.platform>
-				<upload>UploadWidgetGWT</upload>
+				<upload>uploadwidgetgwt</upload>
 				<repository/>
 			</properties>
 			<dependencies>
 				 <dependency>
 					<groupId>nl.numworx.uploadwidget</groupId>
 					<artifactId>${upload}</artifactId>
-					<version>2.5.42</version>
+					<version>2.5.47</version>
 		            <type>war</type>
 				</dependency>
 			</dependencies>
@@ -262,6 +269,13 @@
 			</properties>		
 		</profile>
 		<profile>
+			<id>github</id>
+			<properties>
+				<repository>ghcr.io/utrechtuniversity/numworx-dwo-setup/</repository>
+				<docker.platform>linux/arm64,linux/amd64</docker.platform>
+			</properties>
+		</profile>
+		<profile>
 			<id>azure</id>
 			<activation><activeByDefault>true</activeByDefault></activation>
 			<properties>
@@ -271,19 +285,19 @@
 				<dependency>
 				    <groupId>nl.numworx.schoolyear</groupId>
 				    <artifactId>sy</artifactId>
-				    <version>2.5.34</version>
+				    <version>2.5.47</version>
 				    <type>war</type>
 			    </dependency>
 				<dependency>
 				  <groupId>nl.numworx.osiris</groupId>
 		  		  <artifactId>osiris-import</artifactId>
-		  		  <version>2.5.32</version>
+		  		  <version>2.5.47</version>
 		  		  <type>war</type>
 				</dependency>			
 			    <dependency>
 					<groupId>nl.numworx.uploadwidget</groupId>
 					<artifactId>${upload}</artifactId>
-					<version>2.5.44</version>
+					<version>2.5.47</version>
 		            <type>war</type>
 				</dependency>
 			</dependencies>
