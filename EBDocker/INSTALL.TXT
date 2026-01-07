@@ -1,0 +1,20 @@
+installeren in AWS docker registry:
+mvn -Drevision=2.3.1 docker:build docker:push
+
+Zorg dat de mysql draait.
+runnen:
+mvn docker:build docker:run
+
+met traefik label:
+
+docker run -l traefik.frontend.rule=Host:app.docker.localhost -e DWO_REDIRECT=false -e RDS_PASSWORD=test -e RDS_DB_NAME=dwo_productie_v1_2 --link mysql:mysql 611429739415.dkr.ecr.eu-west-1.amazonaws.com/dwoproject
+
+
+s3 emulator
+	docker run -p 9444:9000 -d --name s3-ninja scireum/s3-ninja:8.3.2
+	export AWS_ENDPOINT = http://s3ninja:9000/s3/
+	
+azure emulator
+	docker run ... --name azurite 
+	export AZ_ENDPOINT = http://azurite:100000/${account)/${container}
+	docker run -p 10000:10000 --name azurite -d mcr.microsoft.com/azure-storage/azurite
