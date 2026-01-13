@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cds
+  name: cds
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: cds
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.network/dwo-k8s-default: "true"
+        io.kompose.service: cds
+    spec:
+      imagePullSecrets:
+      - name: ghcr
+      containers:
+        - image: ghcr.io/utrechtuniversity/numworx-dwo-resources/cds
+          name: cds
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
+status: {}

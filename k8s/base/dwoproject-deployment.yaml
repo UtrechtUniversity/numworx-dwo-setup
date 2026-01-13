@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: dwoproject
+  name: dwoproject
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: dwoproject
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  minReadySeconds: 90
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: dwoproject
+    spec:
+      imagePullSecrets:
+      - name: ghcr
+      containers:
+        - env:
+            - name: DWO_ELB
+              value: "10"
+            - name: DWO_ENV
+              value: app
+            - name: DWO_REDIRECT
+              value: "false"
+            - name: RDS_DB_NAME
+              value: dwo_productie_v1_2
+            - name: RDS_HOSTNAME
+              valueFrom:
+                secretKeyRef:
+                  name: environment
+                  key: rds_hostname
+            - name: RDS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: environment
+                  key: rds_password
+            - name: RDS_USERNAME
+              valueFrom: 
+                secretKeyRef: 
+                  name: environment 
+                  key: rds_username 
+            - name: SMTP_AUTH
+              value: "false"
+            - name: SMTP_EMAIL
+              value: noreply@numworx.nl
+            - name: SMTP_PASSWORD
+              value: xxxxx
+            - name: SMTP_PORT
+              value: "25"
+            - name: SMTP_SERVER
+              value: smtp
+            - name: SMTP_SSL
+              value: "false"
+            - name: SMTP_TLS
+              value: "false"
+            - name: SMTP_USER
+              value: noreply@numworx.nl
+            - name: ALLOW_ORIGIN
+              value: https://app.dwo.nl
+            - name: CDNURL
+              value: https://cdn.dwo.nl
+            - name: CDN_HOST
+              value: cdn.dwo.nl
+            - name: ENV_NOSEB
+              value: "true"
+          image: ghcr.io/utrechtuniversity/numworx-dwo-setup/dwoproject:2.5.47
+          imagePullPolicy: Always
+          name: dwoproject
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: 400m
+              memory: 1280Mi
+            requests:
+              cpu: 100m
+              memory: 1024Mi
+          volumeMounts:
+            - mountPath: /usr/local/tomcat/logs
+              name: logs-volume
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: logs-volume
+          emptyDir: {}
+status: {}

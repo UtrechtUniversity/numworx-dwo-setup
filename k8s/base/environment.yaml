@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:  
+  name: environment
+type: Opaque
+stringData:
+  rds_username: root 
+  rds_password: test
+  rds_hostname: mysql
+  az_sharedkey: azuresharedkey

@@ -1,0 +1,6 @@
+namespace: numworx
+resources:
+- ../base/
+- mysql-pod.yaml
+- mysql-pvc.yaml
+- mysql-service.yaml

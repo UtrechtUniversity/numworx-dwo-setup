@@ -3,5 +3,10 @@ resources:
 - namespace.yaml
 - redis-deployment.yaml
 - redis-service.yaml
-- smtp-sercice.yaml
+- smtp-service.yaml
 - smtp-deployment.yaml
+- cds-deployment.yaml
+- cds-service.yaml
+- environment.yaml
+- dwoproject-deployment.yaml
+- dwoproject-service.yaml
