@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: maintenance
+spec:
+  schedule: "0 0 1 * *"
+  jobTemplate:
+    spec:
+      template:
+          spec:
+            imagePullSecrets:
+            - name: ghcr
+            containers:
+              - name: maintenance
+                image: ghcr.io/utrechtuniversity/numworx-dwo-setup/maintenance
+                env:
+                  - name: PASSWORD
+                    valueFrom:
+                      secretKeyRef:
+                        name: environment
+                        key: gc_password
+                  - name: USERNAME
+                    valueFrom:
+                      secretKeyRef:
+                        name: environment
+                        key: gc_username
+            restartPolicy: OnFailure
+

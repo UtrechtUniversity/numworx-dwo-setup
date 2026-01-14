@@ -8,3 +8,5 @@ stringData:
   rds_password: test
   rds_hostname: mysql
   az_sharedkey: azuresharedkey
+  gc_username: gcadmin
+  gc_password: test

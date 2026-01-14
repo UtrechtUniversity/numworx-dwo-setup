@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:  
+  name: environment
+type: Opaque
+stringData:
+  gc_username: localadmin
+  gc_password: localpass

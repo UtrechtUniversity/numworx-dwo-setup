@@ -10,3 +10,4 @@ resources:
 - environment.yaml
 - dwoproject-deployment.yaml
 - dwoproject-service.yaml
+- maintenance-cronjob.yaml
