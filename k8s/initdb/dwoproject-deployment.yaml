@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dwoproject
+spec:
+  template:
+    spec:
+      initContainers:
+          image: ghcr.io/utrechtuniversity/numworx-dwo-setup/initdb
+          imagePullPolicy: Always
+          name: initdb
+          volumeMounts:
+            - mountPath: /properties
+              name: properties
+      volumes:
+        - name: properties
+          secret:
+            secretName: properties
+status: {}

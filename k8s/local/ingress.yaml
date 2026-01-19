@@ -15,7 +15,7 @@ metadata:
     nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
 spec:
   rules:
-    - host: numworx.local
+    - host: app.numworx
       http:
         paths:
           - pathType: Prefix
@@ -25,17 +25,7 @@ spec:
                 port:
                   number: 80
             path: /
-    - host: numworx.local
-      http:
-        paths:
-          - pathType: Prefix
-            backend:
-              service:
-                name: dwoproject
-                port:
-                  number: 80
-            path: /
-    - host: cds.local
+    - host: cds.numworx
       http:
         paths:
           - pathType: Prefix

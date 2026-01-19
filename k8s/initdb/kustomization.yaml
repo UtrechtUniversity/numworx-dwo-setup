@@ -1,0 +1,9 @@
+namespace: numworx
+resources:
+- ../base/
+patches:
+- path: dwoproject-deployment.yaml
+secretGenerator:
+- name: properties
+  files:
+  - application.properties
