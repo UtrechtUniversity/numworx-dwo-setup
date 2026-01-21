@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dwoproject
+spec:
+  template:
+    spec:
+      containers:
+        - name: filebeat-sidecar
+          image: fluent/fluent-bit
+          args: ['-c', '/fluentbit.yaml', '-v' ]
+          volumeMounts:
+          - name: logs-volume
+            mountPath: /usr/local/tomcat/logs
+          - name: fluentbit-config
+            mountPath: /fluentbit.yaml
+            subPath: fluentbit.yaml
+      volumes:
+        - name: fluentbit-config
+          configMap:
+            name: fluentbit-sidecar-config
+            items:
+              - key: fluentbit.yaml
+                path: fluentbit.yaml

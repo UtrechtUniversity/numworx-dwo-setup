@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dwoproject
+spec:
+  template:
+    spec:
+      containers:
+        - name: filebeat-sidecar
+          image: docker.elastic.co/beats/filebeat-oss:7.9.3
+          env:
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          volumeMounts:
+          - name: logs-volume
+            mountPath: /usr/local/tomcat/logs
+          - name: filebeat-config
+            mountPath: /usr/share/filebeat/filebeat.yml
+            subPath: filebeat.yml
+      volumes:
+        - name: filebeat-config
+          configMap:
+            name: filebeat-sidecar-config
+            items:
+              - key: filebeat.yml
+                path: filebeat.yml

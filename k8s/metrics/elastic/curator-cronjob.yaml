@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: curator
+spec:
+  schedule: "0 0 1 * *"
+  jobTemplate:
+    spec:
+      template:
+          spec:
+            containers:
+              - name: curator
+                image: bobrik/curator:5.8.1
+                args: [ "--config", "/curator/config.yml", "/curator/actions.yml"]
+                volumeMounts:
+                  - name: curator
+                    mountPath: /curator
+                    readOnly: true
+            volumes:
+            - name: curator
+              configMap:
+                  name: curator
+                  items:
+                    - key: "config.yml"
+                      path: "config.yml"
+                    - key: "actions.yml"
+                      path: "actions.yml"
+            restartPolicy: OnFailure
+

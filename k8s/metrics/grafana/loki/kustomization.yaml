@@ -1,0 +1,10 @@
+namespace: numworx
+resources:
+- ../../../base/
+patches:
+- path: fluentbit-sidecar.yaml
+configMapGenerator:
+- name: fluentbit-sidecar-config
+  files:
+  - fluentbit.yaml
+

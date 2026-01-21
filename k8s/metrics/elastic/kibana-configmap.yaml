@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-config
+data:
+  # file-like keys
+  config.properties: |
+     ## Default Kibana configuration from kibana-docker.
+     ## from https://github.com/elastic/kibana-docker/blob/master/build/kibana/config/kibana.yml
+     #
+     server.name: kibana
+     server.host: "0"
+     #server.basePath: /analytics
+     #server.rewriteBasePath: true
+     elasticsearch.hosts: ["http://elasticsearch:9200"]

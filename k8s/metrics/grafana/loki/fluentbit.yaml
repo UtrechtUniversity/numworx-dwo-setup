@@ -1,0 +1,19 @@
+service:
+  parsers_file: '/fluent-bit/etc/parsers.conf'
+
+parsers:
+  - name: tomcat
+    format: regex
+    regex: '^(?<message>.+)$'
+
+pipeline:
+    inputs:
+        - name: tail
+          tag: tomcat
+          path: '/usr/local/tomcat/logs/localhost_access_log.*.txt'
+          parser: apache
+
+    outputs:
+        - name: stdout
+          match: '*'
+

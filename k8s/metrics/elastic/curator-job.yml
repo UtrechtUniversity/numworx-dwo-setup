@@ -1,0 +1,27 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: curatorjob
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: curator
+          image: bobrik/curator:5.8.1
+          args: ["--config", "/curator/config.yml", "/curator/actions.yml"]
+          volumeMounts:
+            - name: curator
+              mountPath: /curator
+              readOnly: true
+      volumes:
+        - name: curator
+          configMap:
+            name: curator
+            items:
+              - key: "config.yml"
+                path: "config.yml"
+              - key: "actions.yml"
+                path: "actions.yml"
+  backoffLimit: 4
