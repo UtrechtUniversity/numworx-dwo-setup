@@ -4,5 +4,13 @@ resources:
 - mysql-pod.yaml
 - mysql-pvc.yaml
 - mysql-service.yaml
+- ingress.yaml
 patches:
 - path: environment.yaml
+components:
+- ../metrics/grafana/loki
+configMapGenerator:
+- name: application
+  behavior: merge
+  envs:
+  - application.properties

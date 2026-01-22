@@ -66,11 +66,20 @@ spec:
             - name: SMTP_USER
               value: noreply@numworx.nl
             - name: ALLOW_ORIGIN
-              value: https://app.dwo.nl
+              valueFrom:
+                configMapKeyRef:
+                  name: application
+                  key: allow_origin
             - name: CDNURL
-              value: https://cdn.dwo.nl
+              valueFrom:
+                configMapKeyRef:
+                  name: application
+                  key: cdn_url
             - name: CDN_HOST
-              value: cdn.dwo.nl
+              valueFrom:
+                configMapKeyRef:
+                  name: application
+                  key: cdn_host
             - name: ENV_NOSEB
               value: "true"
           image: ghcr.io/utrechtuniversity/numworx-dwo-setup/dwoproject:2.5.47

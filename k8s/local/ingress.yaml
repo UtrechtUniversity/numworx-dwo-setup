@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-  namespace: numworx  
   annotations:
     appgw.ingress.kubernetes.io/request-timeout: "600"
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
