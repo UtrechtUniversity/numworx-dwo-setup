@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: www-ingress
+spec:
+  rules:
+    - host: www.numworx
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: www
+                port:
+                  number: 80
+            path: /
