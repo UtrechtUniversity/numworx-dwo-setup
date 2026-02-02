@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lrs-ingress
+  namespace: numworx
+spec:
+  rules:
+    - host: lrs.numworx
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: lrs
+                port:
+                  number: 8080
+            path: /
