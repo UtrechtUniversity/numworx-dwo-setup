@@ -1,0 +1,22 @@
+users:
+  admin:
+  - hubadmin
+https:
+  enabled: true
+  tls:
+    key: /etc/certs/hub-dev.dwo.nl.key
+    cert: /etc/certs/hub-dev_dwo_nl_cert.cer
+user_environment:
+  default_app: jupyterlab
+auth:
+  type: oauthenticator.generic.GenericOAuthenticator
+  OAuthenticator:
+    oauth_callback_url: https://hub.dwo.nl/hub/oauth_callback
+    client_id: 4usc1far0qijtv8jti18etb4rs
+    client_secret: 1t9bhn1ig7g8322rj8ced8f9ivr6s2efkmb019dhkv6p9fvceild
+  GenericOAuthenticator:
+    login_service: Numworx
+    username_key: userName
+    authorize_url: https://app.dwo.nl/dwo/oauth2/login
+    token_url: https://app.dwo.nl/dwo/rest/oauth2/token
+    userdata_url: https://app.dwo.nl/dwo/rest/secure/user/account/get
