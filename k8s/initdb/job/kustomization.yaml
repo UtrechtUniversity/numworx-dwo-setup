@@ -1,0 +1,7 @@
+namespace: numworx
+resources:
+- initdb-job.yaml
+secretGenerator:
+- name: properties
+  files:
+  - application.properties

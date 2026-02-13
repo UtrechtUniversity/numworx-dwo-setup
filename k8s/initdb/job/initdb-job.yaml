@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: initdb
+  namespace: numworx
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      -   image: ghcr.io/utrechtuniversity/numworx-dwo-setup/initdb
+          imagePullPolicy: IfNotPresent
+          name: initdb
+          volumeMounts:
+            - mountPath: /properties
+              name: properties
+      volumes:
+        - name: properties
+          secret:
+            secretName: properties
+status: {}
