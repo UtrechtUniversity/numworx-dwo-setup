@@ -8,6 +8,7 @@ spec:
       containers:
         - name: filebeat-sidecar
           image: fluent/fluent-bit
+          imagePullPolycy: IfNotPresent
           args: ['-c', '/fluentbit.yaml', '-v' ]
           volumeMounts:
           - name: logs-volume

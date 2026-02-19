@@ -82,8 +82,10 @@ spec:
                   key: cdn_host
             - name: ENV_NOSEB
               value: "true"
+            - name: DNS_MEMBERSHIP_SERVICE_NAME
+              value: tomcat-membership
           image: ghcr.io/utrechtuniversity/numworx-dwo-setup/dwoproject:2.5.47
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           name: dwoproject
           ports:
             - containerPort: 80

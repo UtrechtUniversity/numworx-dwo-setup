@@ -11,6 +11,7 @@ resources:
 - dwoproject-deployment.yaml
 - dwoproject-service.yaml
 - maintenance-cronjob.yaml
+- membership-service.yaml
 configMapGenerator:
 - name: application
   envs:
