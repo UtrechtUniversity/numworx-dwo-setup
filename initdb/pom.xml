@@ -8,6 +8,7 @@
 		<username>gcadmin</username>
 		<password>test</password>
 		<url>http://dwoproject/dwo/</url>
+		<initdbVersion>2.5.48</initdbVersion> <!-- never a snapshot -->
 	</properties>
 	<parent>
 		<groupId>nl.uu.fi.dwo</groupId>
@@ -21,7 +22,7 @@
 		<dependency>
 		  <groupId>nl.numworx</groupId>
   		  <artifactId>initdb</artifactId>
-		  <version>${project.version}</version>
+		  <version>${initdbVersion}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -64,7 +65,7 @@
 							<name>${repository}initdb:%l</name>
 							<build>
 							<from>eclipse-temurin:11-jre</from>
-							<cmd><shell>java -jar /maven/initdb-${project.version}.jar /properties/application.properties</shell></cmd>
+							<cmd><shell>java -jar /maven/initdb-${initdbVersion}.jar /properties/application.properties</shell></cmd>
 							<buildx>
 						          <platforms>
 						            <platform>${docker.platform}</platform>

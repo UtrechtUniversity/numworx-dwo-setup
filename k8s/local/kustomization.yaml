@@ -1,7 +1,7 @@
 namespace: numworx
 resources:
-- ../base/
-- mysql-pod.yaml
+- ../initdb/
+- mysql-deployment.yaml
 - mysql-pvc.yaml
 - mysql-service.yaml
 - ingress.yaml

@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     run: dwoproject
   name: dwoproject
@@ -18,7 +17,6 @@ spec:
   minReadySeconds: 90
   template:
     metadata:
-      creationTimestamp: null
       labels:
         run: dwoproject
     spec:

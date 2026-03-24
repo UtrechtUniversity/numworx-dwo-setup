@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       initContainers:
-          image: ghcr.io/utrechtuniversity/numworx-dwo-setup/initdb
+        - image: ghcr.io/utrechtuniversity/numworx-dwo-setup/initdb
           imagePullPolicy: Always
           name: initdb
           volumeMounts:
@@ -16,4 +16,3 @@ spec:
         - name: properties
           secret:
             secretName: properties
-status: {}

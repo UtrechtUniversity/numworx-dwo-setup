@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     io.kompose.service: redis
   name: redis
@@ -15,7 +14,6 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.network/dwo-k8s-default: "true"
         io.kompose.service: redis
     spec:
       containers:
