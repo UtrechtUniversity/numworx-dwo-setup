@@ -1,9 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
+resources:
+- loki-service.yaml
+- loki-deployment.yaml
 patches:
 - path: fluentbit-sidecar.yaml
 configMapGenerator:
 - name: fluentbit-sidecar-config
   files:
   - fluentbit.yaml
+- name: loki-config
+  files:
+  - loki-config.yaml
 
