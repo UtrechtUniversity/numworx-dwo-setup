@@ -9,6 +9,7 @@ patches:
 - path: environment.yaml
 components:
 - ../metrics/grafana/loki
+- ../metrics/grafana/prometheus
 configMapGenerator:
 - name: application
   behavior: merge

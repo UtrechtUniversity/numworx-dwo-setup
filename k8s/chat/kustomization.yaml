@@ -9,3 +9,4 @@ configMapGenerator:
   files:
   - conf.d/chat-numworx.cfg.lua 
   - conf.d/http.cfg.lua
+  - conf.d/oauth.cfg.lua

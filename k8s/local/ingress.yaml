@@ -20,7 +20,7 @@ spec:
           - pathType: Prefix
             backend:
               service:
-                name: dwoproject
+                name: app
                 port:
                   number: 80
             path: /
