@@ -82,7 +82,7 @@ spec:
               value: "true"
             - name: DNS_MEMBERSHIP_SERVICE_NAME
               value: tomcat-membership
-          image: ghcr.io/utrechtuniversity/numworx-dwo-setup/dwoproject:2.5.47
+          image: ghcr.io/utrechtuniversity/numworx-dwo-setup/dwoproject:2.5.50
           imagePullPolicy: IfNotPresent
           name: dwoproject
           ports:
