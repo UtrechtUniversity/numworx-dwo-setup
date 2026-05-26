@@ -36,6 +36,13 @@ Voorlopig nog in de develop branch
 	- een html auteurs omgeving vind je in http://app.numworx/dwo/numworxauthor.html
 	- Logt in als dwoadmin, maak scholen aan voor eigen gebruik. Maak standaard modules en activiteiten.
 
+### Uitbreidingen
+ * De SMTP service is niet geconfigureerd. Je kan wel mail versturen, maar dat wpordt waarschijnlijk nergens meer geaccepteerd.
+ * Er is een *chat* uitbreiding met behulp van prosody. Leerlingen kunnen met hun leraar chatten en onderling.
+ * Het leerdoelen systeem kan resultaten opslaan in een Learning Record Store (LRS). Met behulp van lrsql wordt dit mogelijk gemaakt.
+ * Behalve Python in de browser, is er ook een koppeling gemaakt met Jupyter Notebooks. Daarvoor moet een extra *hub* service worden ingericht.
+ * Metrics en logging. De dwoproject pod heeft een /metrics endpoint voor promethuis. De logging wordt doorgestuurd naar een loki service. Als uitbreiding kan een prometeus service en grafana dashboard gemaakt worden.
+
 ## Tenslotte
 
 Wat is het verschil tussen “lokaal” en  “ergens in de cloud”
@@ -45,6 +52,7 @@ Wat is het verschil tussen “lokaal” en  “ergens in de cloud”
 	- je hebt een eigen domein provider waar je app.mijndomein.nl en cds.mijndomein.nl kunt aanmaken.
 	- die 2 namen vul je in waar nodig op de plaats van ‘app.numworx’ en ‘cds.numworx'
 	- je genereert https certificaten via cert-manager.  Dat gaat dan vanzelf
+	- Kies en configureer welke uitbreidingen je wilt gebruiken. Met name de SMTP service verdient aandacht. Maak gebruik van het content delivery network van je cluster provider.
 	- start de installatie met “kubectl apply -k <directory>” gaat dan weer als vanouds.
 	- je configureerd een eigen Numworx Author applicatie en zet de correcte link op de homepage.
 
