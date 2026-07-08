@@ -20,6 +20,7 @@ These three folders build containers as maven artifacts:
 * initdb
 * maintenance
 * EBDocker
+
 Other folders:
 * docker-smtp, a fork of the [namshi/smtp](https://github.com/namshi/docker-smtp) container, builds arm and x86. See docker-smtp/README.md for details. You will have to configure yourself.
 * prosody, builds a rudimentary prosody server, for chatting in numworx. Not used by default.
@@ -33,11 +34,11 @@ There are several buildx.sh shell scripts to generate containers.
 ## Usage
 
 Build all containers, then go to the k8s/local directory. After 
-'''
+```
     kubectl apply -k .
-'''
+```
 you will have a running numworx web application running at http://app.numworx/
-where app.numworx is an alias for localhost. see k8s/README.md for details
+where app.numworx is an alias for localhost. see k8s/README.md for details and configuration.
 
 ## License
 
