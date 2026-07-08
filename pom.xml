@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>nl.uu.fi.dwo</groupId>
+        <artifactId>dwo.master.pom</artifactId>
+        <version>3.0.0</version>
+    </parent>
+    <artifactId>setup-parent</artifactId>
+    <version>3.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <properties>
+	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	  	<dwoVersion>3.0.0</dwoVersion>
+	  	<authorVersion>3.0.0</authorVersion>
+                <bundleVersion>3.0.0</bundleVersion>
+    </properties>
+  	<repositories>
+            <repository>
+              <snapshots>
+                <enabled>true</enabled>
+              </snapshots>
+              <id>numworx-dwo-author</id>
+              <url>https://maven.pkg.github.com/UtrechtUniversity/numworx-dwo-author</url>
+            </repository>
+            <repository>
+              <snapshots>
+                <enabled>true</enabled>
+              </snapshots>
+              <id>numworx-dwo-project</id>
+              <url>https://maven.pkg.github.com/UtrechtUniversity/numworx-dwo-project</url>
+            </repository>
+	    <repository>
+	      <snapshots>
+	        <enabled>true</enabled>
+	      </snapshots>
+	      <id>numworx-dwo-runner</id>
+	      <url>https://maven.pkg.github.com/UtrechtUniversity/numworx-dwo-runner</url>
+	    </repository>
+	    <repository>
+	      <snapshots>
+	        <enabled>false</enabled>
+	      </snapshots>
+	      <id>numworx-vendor-geogebra</id>
+	      <url>https://maven.pkg.github.com/UtrechtUniversity/numworx-vendor-geogebra</url>
+	    </repository>
+            <repository>
+              <snapshots>
+                <enabled>true</enabled>
+              </snapshots>
+              <id>numworx-gwt-widgets</id>
+              <url>https://maven.pkg.github.com/UtrechtUniversity/numworx-gwt-widgets</url>
+            </repository>
+	</repositories>
+   
+    <!-- should move project role names here that fall in the full project scope -->
+    <modules>
+	<module>initdb</module>
+	<module>maintenance</module>
+	<module>EBDocker</module>
+    </modules>
+    
+    
+    <scm>
+        <developerConnection>scm:git:git@github.com:UtrechtUniversity/numworx-dwo-resources.git</developerConnection>
+    </scm>
+
+    <build>
+        <plugins>
+    		<plugin>
+            	<groupId>external.atlassian.jgitflow</groupId>
+            	<artifactId>jgitflow-maven-plugin</artifactId>
+            	<version>1.0-m5.1</version>
+            	<configuration>
+                	<!-- see goals wiki page for configuration options -->
+                	<flowInitContext>
+             			<developBranchName>develop</developBranchName>  
+             			<masterBranchName>main</masterBranchName>    	
+                	</flowInitContext>
+                	<localOnly>false</localOnly>
+                	<allowSnapshots>false</allowSnapshots>
+                	<enableSshAgent>true</enableSshAgent>
+            	</configuration>
+			  <dependencies>
+			    <dependency>
+			      <groupId>com.jcraft</groupId>
+			      <artifactId>jsch</artifactId>
+			      <version>0.1.54</version>
+			    </dependency>
+				<dependency>
+				  <groupId>net.java.dev.jna</groupId>
+				  <artifactId>jna-platform</artifactId>
+				  <version>5.12.1</version>
+				</dependency>
+			  </dependencies>
+        	</plugin>
+         </plugins>
+         <pluginManagement>
+         	<plugins>
+         		<plugin>
+         			<artifactId>maven-war-plugin</artifactId>
+         			<version>3.2.3</version>
+         		</plugin>
+         	</plugins>
+         
+         </pluginManagement>
+    </build>
+  <dependencyManagement>
+   <dependencies>
+  	<dependency>
+  		<groupId>com.google.gwt</groupId>
+  		<artifactId>gwt-user</artifactId>
+  		<version>${gwtVersion}</version>
+  		<scope>provided</scope>
+  	</dependency>
+   </dependencies>
+  </dependencyManagement>
+    
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.6</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.6</version>
+                <reportSets>
+                    <reportSet>
+                        <reports><!-- select reports -->
+                            <report>index</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+                <reportSets>
+                    <reportSet><!-- by default, id = "default" -->
+                        <reports><!-- select non-aggregate reports -->
+                            <report>javadoc</report>
+                            <report>test-javadoc</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet><!-- aggregate reportSet, to define in poms having modules -->
+                        <id>aggregate</id>
+                        <inherited>false</inherited><!-- don't run aggregate in child modules -->
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+            </plugin>            
+        </plugins>
+    </reporting>
+</project>

@@ -1,66 +1,50 @@
 # numworx-dwo-setup
 Everything to set up the Numworx services on a K8S cluster
-# Title of your code or analysis
-
-Provide a concise and informative title for your code or analysis that
-accurately reflects its content.
 
 ## Introduction
 
-In this section, provide an overview of your code and describe the
-project in which the code was developed. Highlight the purpose,
-scope, and potential uses of your code. Also, consider including
-links to relevant publications or resources that provide additional
-context.
-
+In this project, a complete working numworx environment is build on a local K8S cluster, for example a K3S system with Traefik as ingress enabled. After installation you may point your browser to http://app.numworx/ 
+ 
 ## Prerequisites
 
-Include any necessary prerequisites for using your code, such as
-required datasets, specific software, dependencies or hardware
-requirements. For example: This project requires Python 3.8 or later
-and install the dependencies with `pip install -r
-requirements.txt`. 
+Before running this project, you must have installed the artifacts from several other Numworx projects:
+* numworx-dwo-project, the **ebserver.war** artifact
+* numworx-dwo-runner, the **initdb.jar** and **maintenaince.jar** artifacts
+* numworx-dwo-resources, the **cds** container, the default is to access this container at http://cds.numworx/
 
 ## Contents 
 
 ### Folder structure
 
-Describe the organization of your package, including the contents of
-each folder and the files it contains. Use tables or file trees to
-make it easy for users to understand your folder structure. Describe
-where results and figures are stored if not added to the project
-folder.
+These three folders build containers as maven artifacts:
+* initdb
+* maintenance
+* EBDocker
+Other folders:
+* docker-smtp, a fork of the [namshi/smtp](https://github.com/namshi/docker-smtp) container, builds arm and x86. See docker-smtp/README.md for details. You will have to configure yourself.
+* prosody, builds a rudimentary prosody server, for chatting in numworx. Not used by default.
+* k8s, deploys all containers to a K8S configuration, see k8s/README.md 
 
-### File formats 
+### How to build
 
-Describe the file format(s) used in your project and the software
-required to open them. 
+Use maven with a java 11 distributions. 
+There are several buildx.sh shell scripts to generate containers.
 
 ## Usage
 
-Provide clear and concise instructions on how to use your code.
-Include examples of how to execute the code and describe the expected
-output. If your work consists of multiple execution steps, provide
-detailed step-by-step instructions. 
+Build all containers, then go to the k8s/local directory. After 
+'''
+    kubectl apply -k .
+'''
+you will have a running numworx web application running at http://app.numworx/
+where app.numworx is an alias for localhost. see k8s/README.md for details
 
 ## License
 
-With an open-source license, you grant permission to use your work.
-The most common open-source licenses are MIT, GPL3, and Apache 2.0.
-Choose a license that aligns with your goals for your code.
+This work is licensed under the GNU General Public License version 3.
+Copyright © 2026, Utrecht University, all rights reserved.
 
-For example:
-
-> This work is licensed under the MIT License.
-
-## Citation (optional)
-
-Provide clear instructions on how to cite your code or related
-publications in a research paper or publication. You can include the
-citation in the README file or create a separate CITATION.cff file. 
+Docker-smtp is licenced MIT License, see docker-smtp/LICENSE
 
 ## Contact 
-
-Include contact information for questions or comments about your code.
-You can also provide clear instructions for how users can provide
-feedback, contribute, or suggest improvements to your work. 
+[Wim van Velthoven](mailto:w.p.g.vanvelthoven@uu.nl)

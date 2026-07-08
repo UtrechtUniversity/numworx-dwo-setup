@@ -15,3 +15,6 @@ configMapGenerator:
   behavior: merge
   envs:
   - application.properties
+images:
+- name: ghcr.io/utrechtuniversity/numworx-dwo-setup/dwoproject
+  newTag: 3.0.0
