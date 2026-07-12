@@ -91,6 +91,7 @@
 							<run>
 								<links>
 									<link>mysql:mysql</link>
+									<link>redis:redis</link>
 								</links>
 								<namingStrategy>alias</namingStrategy>
 							</run>
