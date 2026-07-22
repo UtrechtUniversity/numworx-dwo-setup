@@ -18,3 +18,10 @@ configMapGenerator:
 images:
 - name: ghcr.io/utrechtuniversity/numworx-dwo-setup/dwoproject
   newTag: 3.0.0
+- name: ghcr.io/utrechtuniversity/numworx-dwo-resources/cds
+  newTag: 3.0.0
+- name: ghcr.io/utrechtuniversity/numworx-dwo-setup/maintenance
+  newTag: 3.0.0
+- name: ghcr.io/utrechtuniversity/numworx-dwo-setup/initdb
+  newTag: 3.0.0
+
