@@ -3,7 +3,7 @@ Everything to set up the Numworx services on a K8S cluster
 
 ## Introduction
 
-In this project, a complete working numworx environment is build on a local K8S cluster, for example a K3S system with Traefik as ingress enabled. After installation you may point your browser to http://app.numworx/ 
+In this project, a complete working numworx environment is build on a local K8S cluster, for example a K3S system with Traefik as ingress enabled, such as Rancher Desktop. After installation you may point your browser to http://app.numworx/ 
  
 ## Prerequisites
 
@@ -17,9 +17,9 @@ Before running this project, you must have installed the artifacts from several 
 ### Folder structure
 
 These three folders build containers as maven artifacts:
-* initdb
-* maintenance
-* EBDocker
+* initdb a container used as K8S init container. Generates the initial database layout.
+* maintenance a container used as K8S cronjob
+* EBDocker embed the ebserver.war in a tomcat 9 container
 
 Other folders:
 * docker-smtp, a fork of the [namshi/smtp](https://github.com/namshi/docker-smtp) container, builds arm and x86. See docker-smtp/README.md for details. You will have to configure yourself.

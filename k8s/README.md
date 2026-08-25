@@ -62,7 +62,7 @@ In /etc/hosts, it then says:
 ### Extensions
 
 The SMTP service is not configured. You can send mail, but it will probably no longer be accepted anywhere.
-There is a *chat* expansion using Prosody. Students can chat with their teacher and with each other.
+There is a *chat* extension using Prosody. Students can chat with their teacher and with each other.
 The learning objectives system can store results in a Learning Record Store (LRS). This is made possible using lrsql.
 In addition to Python in the browser, a connection has also been made with Jupyter Notebooks. For this, an extra *hub* service must be configured.
 Metrics and logging. The dwoproject pod has a /metrics endpoint for prometheus. The logging is forwarded to a loki service. As an extension, a prometheus service and Grafana dashboard can be created.
@@ -72,9 +72,9 @@ Metrics and logging. The dwoproject pod has a /metrics endpoint for prometheus. 
 What is the difference between “local” and “somewhere in the cloud”
 
 - You have configured an official MySQL database. Backups are properly managed.
-- You have Kubernetes in the cloud and Kubectl that can communicate with it.
+- You have Kubernetes in the cloud and `kubectl` that can communicate with it.
 - You have configured an ingress controller, for example “Traefik"
-- You have your own domain provider where you can create app.mijndomein.nl and cds.mijndomein.nl.
+- You have your own domain provider where you can create app.example.com and cds.example.com.
 - Enter those 2 names where necessary in place of 'app.numworx' and 'cds.numworx'
 - You generate HTTPS certificates via Cert-Manager. That happens automatically.
 - Select and configure which extensions you want to use. The SMTP service deserves particular attention. Make use of your cluster provider's content delivery network.
