@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ideas-cgi-service
+  name: ideas
 spec:
   selector:
     app: ideas-cgi
