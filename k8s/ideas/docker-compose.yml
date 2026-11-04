@@ -1,0 +1,6 @@
+services:
+  ideas-cgi:
+    image: agerdes/ideas-cgi:latest
+    ports:
+      - "80:80"
+
