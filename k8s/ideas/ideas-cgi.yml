@@ -14,9 +14,19 @@ spec:
       labels:
         app: ideas-cgi
     spec:
+      initContainers:
+          - name: qemu
+            image: 'tonistiigi/binfmt:latest'
+            args:
+              - '--install'
+              - amd64
+            imagePullPolicy: Always
+            securityContext:
+              privileged: true
       containers:
       - name: ideas-cgi
-        image: agerdes/ideas-cgi:latest
+        image: agerdes/ideas-cgi@sha256:251281204e4db31ef2cca8a986c21216b7eacd46293ecef7def925c5b3f33753
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
 ---
