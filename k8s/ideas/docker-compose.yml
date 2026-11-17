@@ -1,6 +1,6 @@
 services:
   ideas-cgi:
-    image: agerdes/ideas-cgi:latest
+    image: wimvvv/statistics-cgi:latest
     ports:
       - "80:80"
 
